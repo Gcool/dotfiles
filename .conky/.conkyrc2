@@ -1,0 +1,32 @@
+double_buffer yes
+
+background yes
+own_window no
+own_window_transparent yes
+
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_borders no
+draw_shades no
+
+gap_x 1
+gap_y 30
+alignment bottom_left
+
+update_interval 1
+default_color white
+
+use_xft yes
+xftfont Sans:bold:size=6
+use_spacer none
+
+minimum_size 1100 106
+maximum_width 0
+
+override_utf8_locale yes
+
+color1 91BFF0
+
+TEXT
+${voffset 4}${tail /var/log/everything.log 15}${voffset -4}

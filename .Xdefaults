@@ -1,0 +1,22 @@
+! xterm settings
+xterm*Background:               black
+xterm*Foreground:               white
+
+! URxvt settings
+URxvt.scrollBar: off
+URxvt*foreground: White
+URxvt*background: Black
+URxvt*fadeColor: black
+URxvt*transparent: false
+URxvt*shading: 80
+URxvt*depth:24
+URxvt*borderless: 1
+URxvt*termName: rxvt-256color
+URxvt*title: urxvt
+
+! Xft settings
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight

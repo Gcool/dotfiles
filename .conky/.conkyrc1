@@ -1,0 +1,35 @@
+double_buffer yes
+
+background yes
+own_window yes
+own_window_transparent no
+
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_borders no
+draw_shades no
+
+gap_x -5
+gap_y 2
+alignment top_middle
+
+update_interval 1
+default_color white
+
+use_xft yes
+xftfont Sans:bold:size=7
+use_spacer none
+
+minimum_size 1920 0
+maximum_width 0
+
+override_utf8_locale yes
+
+color1 B0E0E6
+color2 00ff00
+color3 ffff00
+color4 ff0000
+
+TEXT
+${nodename} @ ${kernel}   ${color1}::${color}  CPU load: ${cpu cpu1}%   ${color1}::${color}  CPU temp: ${hwmon temp 1}°C   ${color1}::${color}  Memory: ${mem} (${if_match ${memperc} < 20}${color2}${memperc}%${color}${else}${if_match ${memperc} < 50}${color3}${memperc}%${color}${else}${color4}${memperc}%${color}${endif}${endif})   ${color1}::${color}  Uptime: ${uptime}   ${color1}::${color}  Public IP: ${execi 3600 curl http://www.gcool.be/ip.php}   ${color1}::${color}  Local IP: ${addr eth0}   ${color1}::${color}  Down: ${downspeedf eth0} kb/s   ${color1}::${color}  Up: ${upspeedf eth0} kb/s   ${color1}::${color}  Updates: ${if_match ${execi 1800 ((sudo pacman -Sy > /dev/null 2>&1) ; (pacman -Qu | wc -l))} == 0}${color2}up to date${color}${else}${color3}${execi 1800 (pacman -Qu | wc -l)} new packages${color}${endif}   ${color1}::${color}  /   ${fs_bar 5,60 /} ${fs_used_perc /}%  ${color1}::${color}  /mnt/Games_and_Movies   ${fs_bar 5,60 /mnt/Games_and_Movies} ${fs_used_perc /mnt/Games_and_Movies}%  ${color1}::${color}  /mnt/Apps_and_Music   ${fs_bar 5,60 /mnt/Apps_and_Music} ${fs_used_perc /mnt/Apps_and_Music}%  ${color1}::${color}  /mnt/Data   ${fs_bar 5,60 /mnt/Data} ${fs_used_perc /mnt/Data}%  ${color1}::${color}

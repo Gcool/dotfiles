@@ -1,0 +1,12 @@
+ Config { font = "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"  
+     , bgColor = "#000000"  
+     , fgColor = "#FFFFFF"  
+     , position = Static { xpos = 0 , ypos = 1062, width = 1920, height = 18 }  
+     , commands = [ Run Date "%a %b %_d %k:%M" "date" 10  
+     , Run StdinReader  
+     ]  
+     , sepChar = "%"  
+     , alignSep = "}{"  
+     , template = " %StdinReader%}{ <fc=#FFFFFF>%date%</fc>  "  
+     }  
+  
