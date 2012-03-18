@@ -20,3 +20,36 @@ Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
+
+! black
+URxvt*color0:   #141414
+URxvt*color8:   #5C585C
+
+! blue
+URxvt*color4:   #4756F5
+URxvt*color12:  #002BFF
+
+! cyan
+URxvt*color6:   #6CF7EB
+URxvt*color14:  #07B099
+
+! green
+URxvt*color2:   #45ED6F
+URxvt*color10:  #00FF11
+
+! magenta
+URxvt*color5:   #EE69FA
+URxvt*color13:  #FF00DD
+
+! red
+URxvt*color1:   #F54E00
+URxvt*color9:   #FF0000
+
+! yellow
+URxvt*color3:   #C4DE50
+URxvt*color11:  #DDFF00
+
+! white
+URxvt*color7:   #D6D6D6
+URxvt*color15:  #FFFFFF
+
