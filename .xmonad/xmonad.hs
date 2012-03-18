@@ -29,7 +29,7 @@ myManageHook = composeAll [ className =? "File Operation Progress"   --> doFloat
   , className =? "Firefox" --> doShift "2:web"  
   , className =? "Gimp"    --> doShift "5:misc"  
   , className =? "Vlc"     --> doShift "4:media"  
-      ]  
+  , className =? "Gimp"    --> doFloat      ]  
 
 -- Main
 main = do  
@@ -56,7 +56,7 @@ main = do
           , ((mod4Mask, xK_Return), spawn "urxvt")
           , ((mod4Mask, xK_f), spawn "firefox")
           , ((mod1Mask, xK_F4), kill)
-          , ((mod4Mask, xK_v), spawn "virtualbox")
+          , ((mod4Mask, xK_m), spawn "virtualbox")
           , ((mod4Mask, xK_t), spawn "truecrypt")
           , ((mod4Mask, xK_w), spawn "wireshark")
           , ((mod4Mask, xK_c), spawn "celestia")
