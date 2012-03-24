@@ -20,12 +20,14 @@ import System.Exit
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar /home/gcool/scripts/xmobarrc" 
     xmonad $ azertyConfig
-      { manageHook = myManageHook <+> manageHook defaultConfig
+      { manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
       , layoutHook = avoidStruts $ myLayout
       , logHook = dynamicLogWithPP customPP { ppOutput = hPutStrLn xmproc} 
+      , focusFollowsMouse = True
       , keys = myKeys
       , modMask = myModMask
       , workspaces = myWorkspaces
+      , terminal = myTerminal
       , normalBorderColor = "#000000"
       , focusedBorderColor = "#00FF00"
       , borderWidth = 1
@@ -33,14 +35,14 @@ main = do
 
 -- Workspace/Layout
 myWorkspaces = ["1:main","2:web","3:shells","4:media","5:files","6:misc"] ++ map show [7..9]  
-myLayout = onWorkspaces ["2:web", "4:media"] nobordersLayout $ tiled ||| mtiled ||| tab ||| nobordersLayout
+myLayout = onWorkspaces ["2:web", "4:media"] fullscreen $ tiled ||| mtiled ||| tab ||| fullscreen
 tiled = named "[]" $ Tall nmaster delta ratio
 nmaster = 1  
 ratio = 1/2
 delta = 5/100  
 mtiled = named "M[]" $ smartBorders $ Mirror tiled 
 tab = named "[T]" $ noBorders $ tabbed shrinkText tabTheme 
-nobordersLayout = named "[F]" $ smartBorders $ Full  
+fullscreen = named "[F]" $ smartBorders $ Full  
 
 -- Managehook
 myManageHook = composeAll [ className =? "File Operation Progress"   --> doFloat  
@@ -74,6 +76,11 @@ tabTheme = defaultTheme { decoHeight = 16
                          , inactiveBorderColor = "#FFFFFF"
                          , inactiveTextColor = "#FFFFFF"
                          }
+
+--Terminal
+myTerminal = "urxvt"
+
+--Keys
 myModMask :: KeyMask
 myModMask = mod4Mask
 
@@ -84,7 +91,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         [ ((modMask, xK_r), spawn "exe=`dmenu_run -b -nb black -nf green -sb black` && eval \"exec $exe\"")
 
 -- Open programs
-          , ((modMask, xK_Return), spawn "urxvt")
+          , ((modMask, xK_Return), spawn $ XMonad.terminal conf)
           , ((modMask, xK_f), spawn "firefox")
           , ((mod1Mask, xK_F4), kill)
           , ((modMask, xK_m), spawn "urxvt -e mc")
