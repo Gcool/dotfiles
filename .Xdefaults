@@ -13,6 +13,12 @@ URxvt*depth:24
 URxvt*borderless: 1
 URxvt*termName: rxvt-256color
 URxvt*title: urxvt
+URxvt*urlLauncher: firefox
+
+! Xpdf
+Xpdf*enableFreetype: yes
+Xpdf*antialias: yes
+Xpdf*urlCommand: /usr/bin/firefox %s
 
 ! Xft settings
 Xft.dpi:        96
@@ -22,7 +28,7 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
 ! black
-URxvt*color0:   #141414
+URxvt*color0:   #000000
 URxvt*color8:   #5C585C
 
 ! blue
@@ -34,7 +40,7 @@ URxvt*color6:   #6CF7EB
 URxvt*color14:  #07B099
 
 ! green
-URxvt*color2:   #45ED6F
+URxvt*color2:   #6eed44
 URxvt*color10:  #00FF11
 
 ! magenta
