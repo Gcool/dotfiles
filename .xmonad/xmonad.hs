@@ -31,7 +31,7 @@ main = do
       , normalBorderColor = "#000000"
       , focusedBorderColor = "#00FF00"
       , borderWidth = 1
-       }
+}
 
 -- Workspace/Layout
 myWorkspaces = ["1:main","2:web","3:shells","4:media","5:files","6:misc"] ++ map show [7..9]  
@@ -42,7 +42,7 @@ ratio = 1/2
 delta = 5/100  
 mtiled = named "M[]" $ smartBorders $ Mirror tiled 
 tab = named "[T]" $ noBorders $ tabbed shrinkText tabTheme 
-fullscreen = named "[F]" $ smartBorders $ Full  
+fullscreen = named "[F]" $ noBorders $ Full  
 
 -- Managehook
 myManageHook = composeAll [ className =? "File Operation Progress"   --> doFloat  
@@ -77,6 +77,21 @@ tabTheme = defaultTheme { decoHeight = 16
                          , inactiveTextColor = "#FFFFFF"
                          }
 
+-- GridSelect colors
+myColors = colorRangeFromClassName
+        (0x00, 0x00, 0x00) -- lowest inactive bg -- black
+	(0x00, 0x00, 0x00) -- highest inactive bg -- black
+	(0x00, 0x00, 0x00) -- active bg -- black
+	(0xff, 0xff, 0xff) -- inactive fg -- white
+	(0x00, 0xff, 0x00) -- active fg -- green
+
+-- GridSelect theme
+myGSConfig colors = (buildDefaultGSConfig myColors)
+ 	{ gs_cellheight  = 60
+	, gs_cellwidth   = 250
+	, gs_cellpadding = 10
+	}
+
 --Terminal
 myTerminal = "urxvt"
 
@@ -90,9 +105,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Open dmenu
         [ ((modMask, xK_r), spawn "exe=`dmenu_run -b -nb black -nf green -sb black` && eval \"exec $exe\"")
 
+-- Refresh
+          , ((modMask, xK_r), refresh)  
+
 -- Open programs
           , ((modMask, xK_Return), spawn $ XMonad.terminal conf)
-          , ((modMask, xK_f), spawn "firefox")
+          , ((modMask .|. shiftMask, xK_Return), spawn "xterm")
+	  , ((modMask, xK_f), spawn "firefox")
           , ((mod1Mask, xK_F4), kill)
           , ((modMask, xK_m), spawn "urxvt -e mc")
           , ((modMask, xK_t), spawn "truecrypt")
@@ -102,10 +121,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
           , ((modMask, xK_l), spawn "libreoffice")
           , ((modMask, xK_h), spawn "handbrake")
           , ((modMask, xK_v), spawn "vlc")
+	  , ((modMask, xK_i), spawn "virtualbox")
+          , ((modMask, xK_z), spawn "filezilla")
 
 -- Shutdown/reboot
-          , ((modMask .|. mod1Mask, xK_F4), spawn "urxvt -e sudo shutdown -h now")
-          , ((modMask .|. mod1Mask, xK_r), spawn "urxvt -e sudo reboot")
+          , ((modMask .|. mod1Mask, xK_F4), spawn "sudo shutdown -h now")
+          , ((modMask .|. mod1Mask, xK_r), spawn "sudo reboot")
 
 -- Hetzner ssh
           , ((modMask, xK_s), spawn "/home/gcool/Hetzner/clean.sh")
@@ -114,17 +135,25 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
           , ((modMask .|. mod1Mask, xK_l), spawn "xscreensaver-command --lock")
  
 -- Resizing/Moving
-          , ((controlMask, xK_Up), windows W.swapUp)
-          , ((controlMask, xK_Down), windows W.swapDown)
+          , ((modMask, xK_Up), windows W.swapUp)
+          , ((modMask, xK_Down), windows W.swapDown)
           , ((controlMask, xK_Right), sendMessage Expand)
           , ((controlMask, xK_Left), sendMessage Shrink)
 
+-- Increase/decrease Master windows 
+        , ((controlMask, xK_Up ), sendMessage (IncMasterN 1))
+	, ((controlMask, xK_Down), sendMessage (IncMasterN (-1)))
+
+-- Change focus
+        , ((modMask, xK_Tab), windows W.focusDown)
+        , ((modMask .|. shiftMask, xK_Tab), windows W.focusUp)
+
 --WS cycle
-         , ((modMask,xK_Right),  nextWS)
-         , ((modMask, xK_Left),    prevWS)
+         , ((modMask, xK_Right),  nextWS)
+         , ((modMask, xK_Left),  prevWS)
 
 --Gridselect
-          , ((modMask, xK_g), goToSelected defaultGSConfig)
+          , ((modMask, xK_g), goToSelected $ myGSConfig myColors)
 
 -- Change Layout
           , ((modMask, xK_space), sendMessage NextLayout)
@@ -132,7 +161,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  
 -- Logout/restart
           , ((modMask .|. shiftMask, xK_q), io (exitWith ExitSuccess))
-          , ((modMask , xK_q), spawn "xmonad --recompile; xmonad --restart")
+          , ((modMask, xK_q), spawn "xmonad --recompile; xmonad --restart")
 
 -- Take screenshot      
           , ((0, xK_Print), spawn "scrot")
