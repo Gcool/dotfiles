@@ -103,7 +103,7 @@ myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 -- Open dmenu
-        [ ((modMask, xK_r), spawn "exe=`dmenu_run -b -nb black -nf green -sb black` && eval \"exec $exe\"")
+        [ ((modMask, xK_d), spawn "exe=`dmenu_run -b -nb black -nf green -sb black` && eval \"exec $exe\"")
 
 -- Refresh
           , ((modMask, xK_r), refresh)  
