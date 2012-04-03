@@ -5,6 +5,7 @@ import XMonad.Actions.GridSelect
 import XMonad.Config.Azerty  
 import XMonad.Hooks.DynamicLog  
 import XMonad.Hooks.ManageDocks  
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace  
@@ -50,7 +51,8 @@ myManageHook = composeAll [ className =? "File Operation Progress"   --> doFloat
   , className =? "Firefox" --> doShift "2:web"  
   , className =? "Gimp"    --> doShift "6:misc"  
   , className =? "Vlc"     --> doShift "4:media"  
-  , className =? "Gimp"    --> doFloat      ]  
+  , className =? "Gimp"    --> doFloat        
+  , className =? "Virtualbox" --> doFullFloat   ]
 
 -- Loghook
 myLogHook :: Handle -> X ()
@@ -107,6 +109,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 -- Refresh
           , ((modMask, xK_r), refresh)  
+
+-- Float
+          , ((modMask .|. shiftMask, xK_f), withFocused $ windows . W.sink)
 
 -- Open programs
           , ((modMask, xK_Return), spawn $ XMonad.terminal conf)
