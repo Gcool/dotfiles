@@ -12,6 +12,37 @@ xterm*title: xterm
 xterm*urlLauncher: firefox
 xterm*underlineURLs: true
 
+! xterm black
+xterm*color0:   #000000
+xterm*color8:   #5C585C
+
+! xterm blue
+xterm*color4:   #4756F5
+xterm*color12:  #002BFF
+
+! xterm cyan
+xterm*color6:   #6CF7EB
+xterm*color14:  #07B099
+
+! xterm green
+xterm*color2:   #6eed44
+xterm*color10:  #00FF11
+
+! xterm magenta
+xterm*color5:   #EE69FA
+xterm*color13:  #FF00DD
+
+! xterm red
+xterm*color1:   #F54E00
+xterm*color9:   #FF0000
+
+! xterm yellow
+xterm*color3:   #C4DE50
+xterm*color11:  #DDFF00
+ 
+! xterm white
+xterm*color7:   #D6D6D6
+xterm*color15:  #FFFFFF
 
 ! URxvt settings
 URxvt.scrollBar: off
@@ -26,6 +57,38 @@ URxvt.termName: rxvt-256color
 URxvt.title: urxvt
 URxvt.urlLauncher: firefox
 URxvt.underlineURLs: true
+
+! URxvt black
+URxvt.color0:   #000000
+URxvt.color8:   #5C585C
+
+! URxvt blue
+URxvt.color4:   #4756F5
+URxvt.color12:  #002BFF
+
+! URxvt cyan
+URxvt.color6:   #6CF7EB
+URxvt.color14:  #07B099
+
+! URxvt green
+URxvt.color2:   #6eed44
+URxvt.color10:  #00FF11
+
+! URxvt magenta
+URxvt.color5:   #EE69FA
+URxvt.color13:  #FF00DD
+
+! URxvt red
+URxvt.color1:   #F54E00
+URxvt.color9:   #FF0000
+
+! URxvt yellow
+URxvt.color3:   #C4DE50
+URxvt.color11:  #DDFF00
+
+! URxvt white
+URxvt.color7:   #D6D6D6
+URxvt.color15:  #FFFFFF
 
 ! Xscreensaver settings
 xscreensaver.Dialog.foreground: #00ff00
@@ -98,36 +161,3 @@ Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
-
-! black
-URxvt.color0:   #000000
-URxvt.color8:   #5C585C
-
-! blue
-URxvt.color4:   #4756F5
-URxvt.color12:  #002BFF
-
-! cyan
-URxvt.color6:   #6CF7EB
-URxvt.color14:  #07B099
-
-! green
-URxvt.color2:   #6eed44
-URxvt.color10:  #00FF11
-
-! magenta
-URxvt.color5:   #EE69FA
-URxvt.color13:  #FF00DD
-
-! red
-URxvt.color1:   #F54E00
-URxvt.color9:   #FF0000
-
-! yellow
-URxvt.color3:   #C4DE50
-URxvt.color11:  #DDFF00
-
-! white
-URxvt.color7:   #D6D6D6
-URxvt.color15:  #FFFFFF
-
