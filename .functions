@@ -1,0 +1,85 @@
+#Create archive
+compress () {
+    if [ -n "$1" ] ; then
+        FILE=$1
+        case $FILE in
+        *.tar)      shift && tar cf $FILE $* ;;
+        *.tar.bz2)  shift && tar cjf $FILE $* ;;
+        *.tar.gz)   shift && tar czf $FILE $* ;;
+        *.tgz)      shift && tar czf $FILE $* ;;
+        *.zip)      shift && zip $FILE $* ;;
+        *.rar)      shift && rar $FILE $* ;;
+        esac
+    else
+        echo "usage: compress <archive.tar.gz> <archive> <files>"
+    fi
+}
+
+#Unpack archive
+unpack() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)  tar xjf $1    ;;
+            *.tbz2)     tar xjf $1    ;;
+            *.tar.gz)   tar xzf $1    ;;
+            *.tgz)      tar xzf $1    ;;
+            *.bz2)      bunzip2 $1    ;;
+            *.rar)      unrar x $1    ;;
+            *.gz)       gunzip $1     ;;
+            *.tar)      tar xf $1     ;;
+            *.zip)      unzip $1      ;;
+            *.Z)        uncompress $1 ;;
+            *.7z)       7z x $1       ;;
+            *) echo -e ${YELLOW}"'$1' cannot be unpacked"${RESET} ;;
+        esac
+    else
+        echo -e ${YELLOW}"'$1' is an invalid file"${RESET}
+    fi
+}
+
+#Generate random password
+genpasswd() {
+        local l=$1
+        [ "$l" == "" ] && l=16
+        tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
+}
+
+#Fix permissions
+permfix() {
+    for dir in "$@"; do
+        find "$dir" -type d -exec chmod 755 {} \;
+        find "$dir" -type f -exec chmod 644 {} \;
+    done
+}
+
+#chown
+mkmine() { 
+    sudo chown -R ${USER}:${USER} $1
+}
+
+mkroot() { 
+    sudo chown -R root:root $1
+}
+
+#start/restart/stop services
+start() {
+sudo rc.d start $1
+}
+
+restart() {
+sudo rc.d restart $1
+}
+
+stop() {
+sudo rc.d stop $1
+}
+
+#repeat command x times
+function repeat()
+{
+    local i max
+    max=$1; shift;
+    for ((i=1; i <= max ; i++)); do
+eval "$@";
+    done
+}
