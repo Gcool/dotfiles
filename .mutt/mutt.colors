@@ -1,0 +1,41 @@
+# Default
+color normal white default
+
+# General colors
+color status green default
+color indicator brightwhite default
+color tree blue default
+color error brightred default
+color message brightyellow default
+
+# Headers
+color header brightyellow default "^from:"
+color header yellow default "^to:"
+color header yellow default "^cc:"
+color header blue default "^date:"
+color header brightblue default "^subject:"
+
+# Message bodies
+color attachment brightblack default
+color search red brightblack
+color signature cyan default
+color tilde blue default
+
+# Urls
+color body brightblue default "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
+color body brightblue default "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
+
+# Markup
+color body brightcyan default "(^| )\\*[^ ]+\\*( |$)"
+color body brightcyan default "(^| )_[^ ]+_( |$)"
+color body brightcyan default "(^| )/[^ ]+/( |$)"
+
+# Quotes
+color quoted magenta default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 magenta default
+color quoted4 cyan default
+color quoted5 green default
+color quoted6 magenta default
+color quoted7 cyan default

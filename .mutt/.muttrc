@@ -1,0 +1,40 @@
+# User info
+set from = "user@gmail.com"
+set realname = ""
+
+# Gmail
+set smtp_url = "smtp://user@gmail.com@smtp.gmail.com:587/"
+set imap_user = "user@gmail.com"
+
+# Mailboxes
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+
+# Cache
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set tmpdir = "~/.mutt/tmp"
+
+# Etc
+set mail_check = 180
+set move = no
+set imap_keepalive = 900
+set sort = threads
+set editor = "vim"
+unset imap_passive
+set delete
+set tilde 
+set menu_scroll
+
+# Colors
+source ~/.mutt/mutt.colors
+
+# [bindings]
+bind pager q exit
+bind pager <up> previous-line
+bind pager <down> next-line
+
+# GnuPG
+# source ~/.mutt/gpg.rc
