@@ -31,7 +31,7 @@ set menu_scroll
 # Colors
 source ~/.mutt/mutt.colors
 
-# [bindings]
+# Bindings
 bind pager q exit
 bind pager <up> previous-line
 bind pager <down> next-line
