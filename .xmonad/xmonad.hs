@@ -47,12 +47,15 @@ fullscreen = named "[F]" $ noBorders $ Full
 
 -- Managehook
 myManageHook = composeAll [ className =? "File Operation Progress"   --> doFloat  
-  , className =? "Vlc"     --> doFloat
-  , className =? "Firefox" --> doShift "2:web"  
-  , className =? "Gimp"    --> doShift "6:misc"  
-  , className =? "Vlc"     --> doShift "4:media"  
-  , className =? "Gimp"    --> doFloat        
-  , className =? "Virtualbox" --> doFullFloat   ]
+  , className =? "Downloads"  --> doFloat
+  , className =? "Vlc"        --> doFloat
+  , className =? "Firefox"    --> doShift "2:web"  
+  , className =? "Gimp"       --> doShift "6:misc"  
+  , className =? "Vlc"        --> doShift "4:media"  
+  , className =? "Gimp"       --> doFloat        
+  , className =? "Virtualbox" --> doFullFloat
+  , className =? "Xcalc"      --> doFloat
+  , isFullscreen              --> doFullFloat   ]
 
 -- Loghook
 myLogHook :: Handle -> X ()
@@ -130,8 +133,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
           , ((modMask, xK_z), spawn "filezilla")
 
 -- Shutdown/reboot
-          , ((modMask .|. mod1Mask, xK_F4), spawn "sudo shutdown -h now")
-          , ((modMask .|. mod1Mask, xK_r), spawn "sudo reboot")
+          , ((modMask .|. mod1Mask, xK_F4), spawn "dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop")
+          , ((modMask .|. mod1Mask, xK_r), spawn "dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart")
 
 -- Hetzner ssh
           , ((modMask, xK_s), spawn "/home/gcool/Hetzner/clean.sh")
