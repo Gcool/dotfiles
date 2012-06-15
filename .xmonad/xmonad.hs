@@ -19,11 +19,12 @@ import System.Exit
 
 -- Main
 main = do
-    xmproc <- spawnPipe "/usr/bin/xmobar /home/gcool/scripts/xmobarrc" 
+    bottomBar <- spawnPipe "/usr/bin/xmobar /home/gcool/scripts/xmobarrc" 
+    topBar <- spawnPipe "/usr/bin/conky -c /home/gcool/scripts/.conkyrc1 | dzen2 -bg '#000000' -fg '#ffffff' -h 16 -y 1080 -w 1920 -ta c" 
     xmonad $ azertyConfig
       { manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
       , layoutHook = avoidStruts $ myLayout
-      , logHook = dynamicLogWithPP customPP { ppOutput = hPutStrLn xmproc} 
+      , logHook = dynamicLogWithPP customPP { ppOutput = hPutStrLn bottomBar} 
       , focusFollowsMouse = True
       , keys = myKeys
       , modMask = myModMask
@@ -131,10 +132,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
           , ((modMask, xK_v), spawn "vlc")
 	  , ((modMask, xK_i), spawn "virtualbox")
           , ((modMask, xK_z), spawn "filezilla")
+          , ((modMask, xK_n), spawn "nxclient")
+	  , ((modMask .|. shiftMask, xK_d), spawn "/home/gcool/scripts/diablo.sh")
+          , ((modMask .|. shiftMask, xK_g), spawn "/home/gcool/scripts/gw2.sh")
 
 -- Shutdown/reboot
-          , ((modMask .|. mod1Mask, xK_F4), spawn "dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop")
-          , ((modMask .|. mod1Mask, xK_r), spawn "dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart")
+          , ((modMask .|. mod1Mask, xK_F4), spawn "sudo shutdown -h now")
+          , ((modMask .|. mod1Mask, xK_r), spawn "sudo reboot")
 
 -- Hetzner ssh
           , ((modMask, xK_s), spawn "/home/gcool/Hetzner/clean.sh")
