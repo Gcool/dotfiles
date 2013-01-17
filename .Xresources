@@ -91,13 +91,13 @@ URxvt.color7:   #D6D6D6
 URxvt.color15:  #FFFFFF
 
 ! Xscreensaver settings
-xscreensaver.Dialog.foreground: #00ff00
+xscreensaver.Dialog.foreground: #1c4582
 xscreensaver.Dialog.background: #000000
-xscreensaver.Dialog.topShadowColor: #00ff00
-xscreensaver.Dialog.bottomShadowColor: #00ff00
-xscreensaver.Dialog.Button.foreground: #00ff00
+xscreensaver.Dialog.topShadowColor: #1c4582
+xscreensaver.Dialog.bottomShadowColor: #1c4582
+xscreensaver.Dialog.Button.foreground: #1c4582
 xscreensaver.Dialog.Button.background: #000000
-xscreensaver.Dialog.text.foreground: #00ff00
+xscreensaver.Dialog.text.foreground: #1c4582
 xscreensaver.Dialog.text.background: #000000
 xscreensaver.Dialog.internalBorderWidth:24
 xscreensaver.Dialog.borderWidth: 0
@@ -112,20 +112,20 @@ xcalc*geometry: 250x300
 xcalc.ti.bevel.background: #000000
 xcalc.ti.bevel.screen.background: #000000
 xcalc.ti.bevel.screen.DEG.background: #000000
-xcalc.ti.bevel.screen.DEG.foreground: #00ff00
+xcalc.ti.bevel.screen.DEG.foreground: #1c4582
 xcalc.ti.bevel.screen.GRAD.background: #000000
-xcalc.ti.bevel.screen.GRAD.foreground: #00ff00
+xcalc.ti.bevel.screen.GRAD.foreground: #1c4582
 xcalc.ti.bevel.screen.RAD.background: #000000
-xcalc.ti.bevel.screen.RAD.foreground: #00ff00
+xcalc.ti.bevel.screen.RAD.foreground: #1c4582
 xcalc.ti.bevel.screen.INV.background: #000000
-xcalc.ti.bevel.screen.INV.foreground: #00ff00
+xcalc.ti.bevel.screen.INV.foreground: #1c4582
 xcalc.ti.bevel.screen.LCD.background: #000000
-xcalc.ti.bevel.screen.LCD.foreground: #00ff00
+xcalc.ti.bevel.screen.LCD.foreground: #1c4582
 xcalc.ti.bevel.screen.LCD.shadowWidth: 0
 xcalc.ti.bevel.screen.M.background: #000000
-xcalc.ti.bevel.screen.M.foreground: #00ff00
+xcalc.ti.bevel.screen.M.foreground: #1c4582
 xcalc.ti.bevel.screen.P.background: #000000
-xcalc.ti.bevel.screen.P.foreground: #00ff00
+xcalc.ti.bevel.screen.P.foreground: #1c4582 
 xcalc.ti.Command.foreground: #00ff00 
 xcalc.ti.Command.background: #000000
 xcalc.ti.button5.background: #000000
