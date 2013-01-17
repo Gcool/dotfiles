@@ -31,7 +31,7 @@ main = do
       , workspaces = myWorkspaces
       , terminal = myTerminal
       , normalBorderColor = "#000000"
-      , focusedBorderColor = "#00FF00"
+      , focusedBorderColor = "#1c4582"
       , borderWidth = 1
 }
 
@@ -65,19 +65,19 @@ myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 -- Bar
 customPP :: PP
 customPP = defaultPP { 
-                      ppHidden = xmobarColor "#308014" ""
-                      , ppHiddenNoWindows = xmobarColor "#308014" ""
-                      , ppTitle = xmobarColor "#32CD32" "" . shorten 50
-                      , ppCurrent = xmobarColor "#00FF00" "" . wrap "[" "]"
-                      , ppLayout = xmobarColor "#308014" "" 
-                      , ppSep = xmobarColor "#FFFFFF" "" " | "
+                      ppHidden = xmobarColor "#5365a6" "#000000"
+                      , ppHiddenNoWindows = xmobarColor "#bdbdbd" "#000000"
+                      , ppTitle = xmobarColor "#5365a6" "#000000" . shorten 75 
+                      , ppCurrent = xmobarColor "#1c4582" "#000000" . wrap "[" "]"
+                      , ppLayout = xmobarColor "#1c4582" "#000000" 
+                      , ppSep = xmobarColor "#1c4582" "" " | "
                      }
 
 -- Tabs
 tabTheme = defaultTheme { decoHeight = 16
                          , activeColor = "#000000"
-                         , activeBorderColor = "#00FF00"
-                         , activeTextColor = "#00FF00"
+                         , activeBorderColor = "#1c4582"
+                         , activeTextColor = "#1c4582"
                          , inactiveColor = "#000000"
                          , inactiveBorderColor = "#FFFFFF"
                          , inactiveTextColor = "#FFFFFF"
@@ -89,7 +89,7 @@ myColors = colorRangeFromClassName
 	(0x00, 0x00, 0x00) -- highest inactive bg -- black
 	(0x00, 0x00, 0x00) -- active bg -- black
 	(0xff, 0xff, 0xff) -- inactive fg -- white
-	(0x00, 0xff, 0x00) -- active fg -- green
+	(0x1c, 0x45, 0x82) -- active fg -- blue 
 
 -- GridSelect theme
 myGSConfig colors = (buildDefaultGSConfig myColors)
@@ -109,7 +109,7 @@ myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 -- Open dmenu
-        [ ((modMask, xK_d), spawn "exe=`dmenu_run -b -nb black -nf green -sb black` && eval \"exec $exe\"")
+        [ ((modMask, xK_d), spawn "exe=`dmenu_run -b -nb black -nf blue -sb black` && eval \"exec $exe\"")
 
 -- Refresh
           , ((modMask, xK_r), refresh)  
@@ -133,12 +133,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	  , ((modMask, xK_i), spawn "virtualbox")
           , ((modMask, xK_z), spawn "filezilla")
           , ((modMask, xK_n), spawn "nxclient")
-	  , ((modMask .|. shiftMask, xK_d), spawn "/home/gcool/scripts/diablo.sh")
-          , ((modMask .|. shiftMask, xK_g), spawn "/home/gcool/scripts/gw2.sh")
 
 -- Shutdown/reboot
-          , ((modMask .|. mod1Mask, xK_F4), spawn "sudo shutdown -h now")
-          , ((modMask .|. mod1Mask, xK_r), spawn "sudo reboot")
+          , ((modMask .|. mod1Mask, xK_F4), spawn "sudo systemctl poweroff")
+          , ((modMask .|. mod1Mask, xK_r), spawn "sudo systemctl reboot")
 
 -- Hetzner ssh
           , ((modMask, xK_s), spawn "/home/gcool/Hetzner/clean.sh")
