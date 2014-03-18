@@ -45,18 +45,24 @@ xterm*color7:   #D6D6D6
 xterm*color15:  #FFFFFF
 
 ! URxvt settings
+URxvt.geometry: 247x68 
 URxvt.scrollBar: off
 URxvt.foreground: White
 URxvt.background: Black
 URxvt.fadeColor: black
-URxvt.transparent: false
+URxvt.transparent: true 
 URxvt.shading: 80
-URxvt.depth:24
+URxvt.depth:32
 URxvt.borderless: 1
 URxvt.termName: rxvt-256color
 URxvt.title: urxvt
 URxvt.urlLauncher: firefox
 URxvt.underlineURLs: true
+URxvt.perl-ext-common: ...,tabbed,...
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0 
+URxvt.tabbed.tab-fg:    1
+URxvt.tabbed.tab-bg:    0
 
 ! URxvt black
 URxvt.color0:   #000000

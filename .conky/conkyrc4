@@ -1,0 +1,31 @@
+double_buffer yes
+
+background yes
+own_window yes
+own_window_transparent yes
+
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_borders no
+draw_shades no
+
+gap_x 55
+gap_y 78
+alignment top_left
+
+update_interval 1
+default_color white
+
+use_xft yes
+xftfont Sans:bold:size=7
+use_spacer none
+
+minimum_size 250 250
+maximum_width 0
+
+override_utf8_locale yes
+
+lua_load ~/.config/conky/clock.lua
+lua_draw_hook_pre clock_rings
+TEXT

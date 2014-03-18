@@ -1,0 +1,16 @@
+${image ~/.config/conky/panel5.png -p -10,-10}
+${voffset -10}${color2}Today${color}
+${color1}${execi 3600 python ~/.config/conky/getdate.py 0}${color}
+[--datatype=HT --hideunits]
+${color3}[--datatype=CC]${color}
+${image [--datatype=WI] -p 120,19 -s 67x46}
+${voffset -2}${color2}Tomorrow${color}
+${color1}${execi 3600 python ~/.config/conky/getdate.py 1}${color}
+[--datatype=LT --startday=1 --hideunits] / [--datatype=HT --startday=1 --hideunits]
+${color3}[--datatype=CT --startday=1]${color}
+${image [--datatype=WI --startday=1] -p 120,77 -s 67x46}
+${voffset -2}${color2}[--datatype=DW --startday=2]${color}
+${color1}${execi 3600 python ~/.config/conky/getdate.py 2}${color}
+[--datatype=LT --startday=2 --hideunits] / [--datatype=HT --startday=2 --hideunits]
+${color3}[--datatype=CT --startday=2]${color}
+${image [--datatype=WI --startday=2] -p 120,135 -s 67x46}

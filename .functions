@@ -63,15 +63,15 @@ mkroot() {
 
 #start/restart/stop services
 start() {
-sudo rc.d start $1
+sudo systemctl start $1
 }
 
 restart() {
-sudo rc.d restart $1
+sudo systemctl restart $1
 }
 
 stop() {
-sudo rc.d stop $1
+sudo systemctl stop $1
 }
 
 #repeat command x times

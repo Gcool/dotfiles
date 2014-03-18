@@ -20,13 +20,28 @@ export EDITOR="vim"
 export BROWSER="firefox"
 
 #Aliases
+alias lah='ls -lah --color=auto'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias zgrep='zgrep --color=auto'
 alias orphan='sudo pacman -Qdt'
 alias gitkey='eval `ssh-agent -s` && ssh-add /home/gcool/.ssh/github'
 alias gitupdate='sh /home/gcool/scripts/github.sh'
-alias pacman='sudo pacman-color'
+alias pgpload='sh /home/gcool/scripts/pgpload.sh'
+alias gpgload='sh /home/gcool/scripts/pgpload.sh'
+alias pacman='sudo pacman'
+alias pacman-key='sudo pacman-key'
+alias mount='sudo mount'
+alias umount='sudo umount'
+alias cacheclean='sudo pkgcacheclean -v 3'
+alias vacuum='sqlite3 /home/gcool/.mozilla/firefox/uf2mf5k0.default/places.sqlite VACUUM'
+alias cower='cower --color=auto'
+alias tmuxatt='tmux attach'
+alias gparted='sudo gparted'
+alias nzbdir='cd /mnt/download/Usenet/nzb'
+alias downloaddir='cd /mnt/download/Usenet/download'
+alias systemctl='sudo systemctl'
+alias reboot='sudo systemctl reboot'
 
 #GitHub tab completion
 source /usr/share/git/completion/git-completion.bash

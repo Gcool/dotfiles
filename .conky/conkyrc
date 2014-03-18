@@ -1,0 +1,119 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Ubuntu:size=8
+override_utf8_locale yes
+text_buffer_size 4096
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type desktop 
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment top_right
+gap_x 1940
+gap_y 38
+minimum_size 200 0
+maximum_width 200
+
+default_bar_size 60 8
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+
+default_color cccccc
+
+color0 white
+color1 E07A1F
+color2 white
+
+
+TEXT
+SYSTEM ${hr 2}
+${goto 6}${voffset 6}${font conkycolorslogos:size=32}a${font}${goto 55}${voffset -25}$machine
+${goto 55}Kernel: ${kernel} 
+
+${hr 2}
+
+CPU Freq ${hr 2}
+${goto 6}${voffset 4}${font conkycolors:size=16}E${font}${voffset -4}${goto 32}Frequency: ${alignr}${freq_g (1)} GHz
+
+#CPU Usage ${hr 2}
+#${goto 6}${font conkycolors:size=16}A${font}${voffset -4}${goto 32}CPU1: ${cpu cpu0}% ${alignr}${cpubar cpu0 8,60}
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU1: ${cpu cpu1}% ${alignr}${cpubar cpu1 8,60} 
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU2: ${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU3: ${cpu cpu3}% ${alignr}${cpubar cpu3 8,60}
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU4: ${cpu cpu4}% ${alignr}${cpubar cpu4 8,60}
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU5: ${cpu cpu5}% ${alignr}${cpubar cpu5 8,60}
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU6: ${cpu cpu6}% ${alignr}${cpubar cpu6 8,60}
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU7: ${cpu cpu7}% ${alignr}${cpubar cpu7 8,60}
+#${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU8: ${cpu cpu8}% ${alignr}${cpubar cpu8 8,60}
+CPU Usage ${hr 2}
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU1: ${cpu cpu1}%${alignr}CPU2: ${cpu cpu2}%
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU3: ${cpu cpu3}%${alignr}CPU4: ${cpu cpu4}%
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU5: ${cpu cpu5}%${alignr}CPU6: ${cpu cpu6}%
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}CPU7: ${cpu cpu7}%${alignr}CPU8: ${cpu cpu8}%
+
+CPU Temperatures ${hr 2}
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}Core0:${alignr}${color #FCAF3E}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'} $color
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}Core1:${alignr}${color #FCAF3E}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'} $color
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}Core2:${alignr}${color #FCAF3E}${execi 30 sensors | grep 'Core 2' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'} $color
+${goto 6}${voffset 4}${font conkycolors:size=16}c${font}${voffset -4}${goto 32}Core3:${alignr}${color #FCAF3E}${execi 30 sensors | grep 'Core 3' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'} $color
+
+Misc Info ${hr 2}
+${goto 6}${voffset 4}${font conkycolors:size=16}d${font}${voffset -4}${goto 32}GPU Temp: ${alignr}${color #FCAF3E}${exec nvidia-settings -q GPUCoreTemp | grep Attribute | cut -d ' ' -f 6 | cut -c 1-2} °C$color
+${goto 6}${voffset 4}${font conkycolors:size=16}g${font}${voffset -4}${goto 32}Memory: ${mem} ${alignr}${membar 8,60}
+${goto 6}${voffset 4}${font conkycolors:size=16}i${font}${voffset -4}${goto 32}Disk: ${diskio}${alignr}${diskiograph 8,60 F57900 FCAF3E}
+${goto 6}${voffset 4}${font conkycolors:size=16}o${font}${voffset -4}${goto 32}Uptime: ${alignr}${color #00FF00}${uptime}$color
+${goto 6}${voffset 4}${font conkycolors:size=16}C${font}${voffset -4}${goto 32}Processes: ${alignr}$processes ($running_processes running)
+${goto 7.5}${voffset 4}${font Poky:size=15}${font}${goto 32}${voffset -10}Highest: ${alignr 13}CPU${alignr}RAM
+${goto 32}${voffset -5.5}${hr 1}
+${voffset -1}${goto 32}${top name 1} ${goto 124}${top cpu 1}${alignr }${top mem 1}
+${voffset -1}${goto 32}${top name 2} ${goto 124}${top cpu 2}${alignr }${top mem 2}
+${voffset -1}${goto 32}${top name 3} ${goto 124}${top cpu 3}${alignr }${top mem 3}
+${voffset -1}${goto 32}${top name 4} ${goto 124}${top cpu 4}${alignr }${top mem 4}
+
+HDD Temperature ${hr 2}
+${font conkycolors:size=15}i${font}${voffset -5}${goto 32}/dev/sda:${alignr}${color #FCAF3E}${exec hddtemp /dev/sda -n --unit=C} °C$color
+${font conkycolors:size=15}i${font}${voffset -5}${goto 32}/dev/sdb:${alignr}${color #FCAF3E}${exec hddtemp /dev/sdb -n --unit=C} °C$color
+${font conkycolors:size=15}i${font}${voffset -5}${goto 32}/dev/sdc:${alignr}${color #FCAF3E}${exec hddtemp /dev/sdc -n --unit=C} °C$color
+${font conkycolors:size=15}i${font}${voffset -5}${goto 32}/dev/sdd:${alignr}${color #FCAF3E}${exec hddtemp /dev/sdd -n --unit=C} °C$color
+
+HDD ${hr 2}
+${font conkycolors:size=16}i${font} ${voffset -5}/
+${voffset 4}${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}
+${font conkycolors:size=16}i${font} ${voffset -5}/home
+${voffset 4}${fs_used /home}/${fs_size /home} ${alignr}${fs_bar 8,60 /home}
+${font conkycolors:size=16}i${font} ${voffset -5}/mnt/download
+${voffset 4}${fs_used /mnt/download}/${fs_size /mnt/download} ${alignr}${fs_bar 8,60 /mnt/download}
+${font conkycolors:size=16}i${font} ${voffset -5}/mnt/data
+${voffset 4}${fs_used /mnt/data}/${fs_size /mnt/data} ${alignr}${fs_bar 8,60 /mnt/data}
+
+Network ${hr 2}
+
+${voffset -13}${font conkycolors:size=14}x${font}${goto 32}${voffset -6}Up: ${upspeed enp3s0}${font} ${alignr}${upspeedgraph enp3s0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totalup enp3s0}
+${voffset -2}${font conkycolors:size=14}u${font}${goto 32}${voffset -6}Down: ${downspeed enp3s0}${font} ${alignr}${downspeedgraph enp3s0 8,60 F57900 FCAF3E}
+${goto 32}Total: ${totaldown enp3s0}
+${voffset -2}${font conkycolors:size=14}A${font}${goto 32}${voffset -4}Local IP: ${alignr}${addr enp3s0}
+${voffset -2}${font conkycolors:size=14}A${font}${goto 32}${voffset -4}Public IP: ${alignr}${execi 3600 curl http://www.gcool.be/ip.php}
+

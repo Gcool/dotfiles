@@ -1,0 +1,56 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Ubuntu:size=8
+override_utf8_locale yes
+text_buffer_size 4096
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type desktop 
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment top_right
+gap_x 1940
+gap_y 930
+minimum_size 200 0
+maximum_width 200
+
+default_bar_size 60 8
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+
+default_color cccccc
+
+color0 white
+color1 E07A1F
+color2 white
+
+
+TEXT
+Updates: ${hr 2}
+
+${voffset -2}${font conkycolors:size=14}a${font}${goto 32}${voffset -4}Pacman:${alignr}${execpi 900 sh /home/gcool/scripts/package_updates.sh}
+
+${voffset -2}${font conkycolors:size=14}v${font}${goto 32}${voffset -4}New mails:${alignr}${execpi 600 /home/gcool/scripts/checkmail.pl} 
+${hr 2}

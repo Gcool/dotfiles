@@ -1,0 +1,37 @@
+double_buffer yes
+
+background yes
+own_window yes
+own_window_transparent yes
+
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+draw_borders no
+draw_shades no
+
+gap_x 41
+gap_y 64
+alignment top_right
+
+update_interval 60
+default_color white
+
+use_xft yes
+xftfont Sans:bold:size=7
+use_spacer none
+
+minimum_size 0 250
+maximum_width 170
+border_inner_margin 15
+
+override_utf8_locale yes
+
+color1 ffffff
+color2 c1d8f0
+color3 999999
+
+text_buffer_size 2048
+
+TEXT
+${execpi 1800 conkyForecast --location=HRXX0010 --template=~/.config/conky/conkyForecast.template}
